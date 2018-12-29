@@ -22,5 +22,22 @@ easyHttp.prototype.get = function (url, callback) {
 
 
 // Make an Http Post request
+easyHttp.prototype.post = function (url, data, callback) {
+    this.http.open('POST', url, true);
+    this.http.setRequestHeader('Content-type', 'application/json');
+
+    // arrow functions fixes this
+    let self = this;
+    this.http.onload = function () {
+        callback(null, self.http.responseText);
+    }
+
+
+
+    // regular JS function need JSON
+    this.send(JSON.stringify(data));
+
+}
+
 // Make an Http Put request
 // Make an Http Delete request
