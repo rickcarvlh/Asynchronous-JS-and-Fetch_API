@@ -8,31 +8,21 @@ document.getElementById('button3').addEventListener('click', getExternal);
 // ! Get local text file data
 function getText() {
     fetch('text.txt')
-        .then(function (res) {
-            // here we get a promise
-            // console.log(res.text());
-            return res.text();
-        })
-        .then(function (data) {
+        .then(res => res.text())
+        .then(data => {
             console.log(data);
             // output the data to the UI
             document.getElementById('output').innerHTML = data;
         })
         // catch error
-        .catch(function (err) {
-            console.log(err);
-
-        });
+        .catch(err => console.log(err));
 }
 
 // ! Get local JSON data
 function getJson() {
     fetch('posts.json')
-        .then(function (res) {
-            // here we get a promise
-            return res.json();
-        })
-        .then(function (data) {
+        .then(res => res.json())
+        .then(data => {
             console.log(data);
             // output the data to the UI
             // document.getElementById('output').innerHTML = data;
@@ -45,20 +35,14 @@ function getJson() {
             document.getElementById('output').innerHTML = output;
         })
         // catch error
-        .catch(function (err) {
-            console.log(err);
-
-        });
+        .catch(err => console.log(err));
 }
 
 // ! Get from external API 
 function getExternal() {
     fetch('https://api.github.com/users')
-        .then(function (res) {
-            // here we get a promise
-            return res.json();
-        })
-        .then(function (data) {
+        .then(res => res.json())
+        .then(data => {
             console.log(data);
             // output the data to the UI
             // document.getElementById('output').innerHTML = data;
@@ -71,8 +55,5 @@ function getExternal() {
             document.getElementById('output').innerHTML = output;
         })
         // catch error
-        .catch(function (err) {
-            console.log(err);
-
-        });
+        .catch(err => console.log(err));
 }
